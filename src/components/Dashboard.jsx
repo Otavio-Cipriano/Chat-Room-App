@@ -1,5 +1,7 @@
 import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
+import ChatRoom from './ChatRoom'
+import Navbar from './Navbar'
 
 
 export default function Dashboard() {
@@ -8,9 +10,9 @@ export default function Dashboard() {
         signOut()
     }
     return (
-        <div>
-            <h2>DASHBOARD</h2>
-            <button onClick={handleClick}>Log out</button>
+        <div className="dashboard">
+            <Navbar/>
+            <ChatRoom/>
         </div>
     )
 }

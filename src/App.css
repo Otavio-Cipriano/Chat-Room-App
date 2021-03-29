@@ -1,8 +1,17 @@
+:root{
+    --dark-blue: #0b0c10;
+    --mid-dark-blue: #1f2833;
+    --light-gray: #c5c6c7;
+    --aqua-marin: #66fcf1;
+    --dark-aqua-marin: #45A29E;
+    --chat-color: #0b0c104d;
+}
+
 *{
     margin: 0;
 }
 body{
-    background-color: #323232;
+    background-color: var(--mid-dark-blue);
 }
 
 .login{
@@ -17,17 +26,118 @@ body{
 .login-form{
     width: 30%;
     min-width: 300px;
+    max-width: 500px;
     height: 100%;
     max-height: 500px;
     display: flex;
     flex-direction: column;
     align-self: center;
-    background-color: #0B0C10;
+    background-color: var(--dark-blue);
     color: #C5C6C7;
     padding: 50px 30px;
     box-sizing: border-box;
+    box-shadow: 4px 7px 8px 7px #0b0c10c4;
 }
 
 .login-form button{
-    padding: 10px;
+    padding: 15px;
+    margin-top: 50px;
+    background-color: transparent;
+    color: #C5C6C7;
+    font-weight: bold;
+    font-size: 18px;
+    border: #66FCF1 solid 2px;
+    box-sizing: border-box;
+}
+
+.login-form button:hover{
+    cursor: pointer;
+    background-color: #181921;
+}
+
+.login-form button svg{
+    font-size: 30px;
+    margin-bottom: -8px;
+    margin-right: 5px;
+}
+
+.dashboard{
+    width: 100vw;
+    height: 100vh;
+}
+
+.chat-room{
+    width: 100%;
+    height: 90%;
+}
+.chat-room .messages-container{
+    height: 84%;
+    background-color: var(--chat-color);
+}
+.chat-room .messenger{
+    width: 100%;
+    display: flex;
+    height: 15%;
+}
+
+.messenger textarea{
+    resize: none;
+    background-color: var(--dark-blue);
+    border: none;
+    width: 80%;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+.messenger button{
+    width: 20%;
+}
+
+.navbar{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    background-color: var(--dark-blue);
+    color: var(--light-gray)
+}
+.navbar .user-info{
+    width: 70%;
+    display: flex;
+    align-content: center;
+}
+.navbar .user-info .user-name{
+    width: 50%;
+    align-self: center;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.navbar .user-info .user-avatar{
+    margin-top: 3px;
+    width: 50%;
+    max-width: 60px;
+    height: 90%;
+}
+.navbar .user-info .user-avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin-left: 4px;
+}
+.navbar .user-tools{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+.navbar .user-tools .exit-button{
+    /* justify-self: center; */
+    align-self: center;
+    margin-right: 10px;
+    text-align: right;
+    margin-top: 15px;
+    font-size: 35px;
+}
+
+.exit-button:hover{
+    cursor: pointer;
+    color: var(--aqua-marin);
 }
