@@ -2,10 +2,9 @@ import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 
 
-export default function Dashboard({handleLogout}) {
+export default function Dashboard() {
     const {signOut} = useAuth()
     const handleClick = () =>{
-        handleLogout(false)
         signOut()
     }
     return (

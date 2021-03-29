@@ -4,3 +4,30 @@
 body{
     background-color: #323232;
 }
+
+.login{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.login-form{
+    width: 30%;
+    min-width: 300px;
+    height: 100%;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    background-color: #0B0C10;
+    color: #C5C6C7;
+    padding: 50px 30px;
+    box-sizing: border-box;
+}
+
+.login-form button{
+    padding: 10px;
+}

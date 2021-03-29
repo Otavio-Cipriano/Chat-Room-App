@@ -3,6 +3,8 @@ import './App.css';
 import Signin from './components/Signin';
 import Dashboard from './components/Dashboard';
 import { AuthProvider } from './contexts/AuthProvider';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { PrivateRoute } from './routes/private/PrivateRoute';
 
 
 function App() {
@@ -11,7 +13,12 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-        {logged ? <Dashboard handleLogout={setLogged} /> : <Signin handleLogin={setLogged} />}
+        <Router>
+          <Route exact path="/" component={Signin}/>
+          <PrivateRoute>
+            <Route path="/Dashboard" component={Dashboard}/>
+          </PrivateRoute>
+        </Router>
       </AuthProvider>
     </div>
   );

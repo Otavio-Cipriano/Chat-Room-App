@@ -1,43 +1,46 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { auth, provider } from '../firebase'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const AuthContext = React.createContext()
 
-export function useAuth(){
+export function useAuth() {
     return useContext(AuthContext)
 }
 
-export function AuthProvider({children}) {
-    const [currentUser, setCurrentUser] = useState();
+export function AuthProvider({ children }) {
+    const [currentUser, setCurrentUser] = useLocalStorage('User')
     const [logged, setLogged] = useState(false)
 
-    const signInWithGoogle=()=>{
-        auth.signInWithPopup(provider).then((result)=>{
-            setCurrentUser({
-                profile: result.additionalUserInfo.profile,
-                isNewUser: result.additionalUserInfo.isNewUser,
-                credential: result.credential
-            })
-        })
-        setLogged(true)
+    const signInWithGoogle = async () => {
+        await auth.signInWithPopup(provider).then((result) => {
+            if(result){
+                setCurrentUser({
+                    profile: result.additionalUserInfo.profile,
+                    isNewUser: result.additionalUserInfo.isNewUser
+                })
+            }
+        }).catch(err =>{ console.error(err)})
+        await setLogged(true)
     }
 
     useEffect(()=>{
-       const unsubscribe = auth.onAuthStateChanged(user =>{
-            setCurrentUser(user)
-        })
-        return unsubscribe
-    },[])
+        if(currentUser != undefined){
+            setLogged(true)
+        }
+    }, [])
 
-    const signOut = () =>{
+    const signOut = () => {
         auth.signOut();
         setCurrentUser();
         setLogged(false)
     }
+
     const value = {
         signInWithGoogle,
         signOut,
-        currentUser
+        currentUser,
+        logged
     }
     return (
         <AuthContext.Provider value={value}>
