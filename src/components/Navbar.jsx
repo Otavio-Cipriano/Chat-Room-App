@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import {BiExit} from 'react-icons/bi'
+import './Navbar.css'
 
 export default function Navbar() {
     const { currentUser } = useAuth()

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { useAuth } from '../contexts/AuthProvider'
 import {AiFillGoogleCircle} from 'react-icons/ai'
+import './Signin.css'
 
 export default function Signin() {
     const { signInWithGoogle, logged } = useAuth()
