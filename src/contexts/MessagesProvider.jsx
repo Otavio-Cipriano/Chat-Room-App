@@ -12,6 +12,7 @@ export function MessagesProvider({children}){
     const [messages, setMessages] = useState([])
     const {currentUser} = useAuth()
     const collection = db.collection('Messages')
+    .orderBy("date", 'desc')
 
     const getMessages = () =>{
         collection.onSnapshot((querySnapshot)=>{

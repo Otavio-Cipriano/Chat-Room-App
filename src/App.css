@@ -5,6 +5,8 @@
     --aqua-marin: #66fcf1;
     --dark-aqua-marin: #45A29E;
     --chat-color: #0b0c104d;
+    --mine-message: #346bb1;
+    --not-mine-message: #3d4461;
 }
 
 *{
@@ -17,4 +19,6 @@ body{
 .dashboard{
     width: 100vw;
     height: 100vh;
+    max-width: 680px;
+    margin: auto;
 }

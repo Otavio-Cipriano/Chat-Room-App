@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthProvider'
 import {BiExit} from 'react-icons/bi'
 import './Navbar.css'
 
-export default function Navbar() {
+export default function Navbar({signOut}) {
     const { currentUser } = useAuth()
     return (
         <div className="navbar">
@@ -21,7 +21,7 @@ export default function Navbar() {
                 </div>
             </div>
             <div className="user-tools">
-                <div className="exit-button"><BiExit/></div>
+                <div className="exit-button" onClick={signOut}><BiExit/></div>
             </div>
         </div>
     )

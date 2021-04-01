@@ -3,7 +3,7 @@
     height: 90%;
 }
 .chat-room .messages-container{
-    height: 84%;
+    height: 90%;
     background-color: var(--chat-color);
     box-sizing: border-box;
     padding: 10px 0;
@@ -18,26 +18,46 @@ form{
 .chat-room .messenger{
     width: 100%;
     display: flex;
-    height: 15%;
+    height: 10%;
 }
 
 .messenger textarea{
     resize: none;
     background-color: var(--dark-blue);
     border: none;
-    width: 80%;
+    width: 85%;
     color: white;
     font-size: 15px;
     font-weight: 700;
+    padding: 15px;
+    border-radius: 10px;
+    outline: none;
 }
 .messenger button{
-    width: 20%;
+    width: 15%;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--aqua-marin);
+    background-color: var(--dark-blue);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.messenger button:focus{
+    color: var(--dark-aqua-marin);
 }
 
 .message{
     display: flex;
     margin: 10px 10px 20px 10px;
 }
+.reverse-message{
+    flex-direction: row-reverse;
+}
+
 .message .user-icon{
     width: 30%;
     max-width: 40px;
@@ -55,16 +75,28 @@ form{
 }
 
 .message-text{
-    background-color: white;
-    padding: 10px;
+    /* background-color: white; */
+    padding: 10px 15px;
     box-sizing: border-box;
     word-wrap: break-word;
     border-radius: 10px;
     margin-left: 10px;
+    margin-right: 10px;
+    color: var(--light-gray);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.mine-message{
+    background-color: var(--mine-message);
+}
+
+.not-mine-message{
+    background-color: var(--not-mine-message);
 }
 
 .message-details{
-    padding: 0 5px 0 20px;
+    padding: 3px 20px 0 20px;
     text-align: right;
     color: var(--light-gray);
     font-weight: bold;

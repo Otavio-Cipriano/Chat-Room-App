@@ -12,7 +12,7 @@ export default function Dashboard() {
     }
     return (
         <div className="dashboard">
-            <Navbar />
+            <Navbar signOut={handleClick}/>
             <MessagesProvider>
                 <ChatRoom />
             </MessagesProvider>

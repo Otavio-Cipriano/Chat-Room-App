@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthProvider'
-import { TimeConverter } from '../hooks/timeConverter';
 
 const language = navigator.language;
 const options = {
@@ -18,18 +17,22 @@ export default function Message({ message }) {
         .toLocaleString(language, options)
         return newDate;
     }
+    const isMine = currentUser.profile.given_name == message.user ||
+    currentUser.profile.name == message.user? true : false; 
+
     return (
-        <div className="message">
+        <div className={`message ${isMine ? 'reverse-message': null}`}>
             <div className="user-icon">
                 <img src={message.user_icon} alt={`${message.user_icon}'s icon`} />
             </div>
             <div className="message-container">
-                <div className="message-text">
+                <div className={`message-text ${
+                    isMine ? 
+                'mine-message': 'not-mine-message'}`}>
                     {message.message}
                 </div>
                 <div className="message-details">
-                    {message.user == currentUser.profile.given_name || 
-                    message.user == currentUser.profile.name ?
+                    {isMine ?
                     "You " :
                     `${message.user} `
                     } 

@@ -17,10 +17,11 @@
     margin-left: 20px;
 }
 .navbar .user-info .user-avatar{
-    margin-top: 3px;
+    margin: 15px 10px 10px 10px;
     width: 50%;
-    max-width: 65px;
+    max-width: 63px;
     height: 90%;
+    max-height: 65px;
 }
 .navbar .user-info .user-avatar img{
     width: 100%;
