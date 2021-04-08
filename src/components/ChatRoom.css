@@ -102,3 +102,23 @@ form{
     font-weight: bold;
     font-size: 15px;
 }
+
+.loading-message-text{
+    background-color: #171717;
+    padding: 30px;
+}
+
+.loading-message-details{
+    width: 50%;
+    background-color: #171717;
+    margin-left: auto;
+    margin-right: 13px;
+    margin-top: 4px;
+    padding: 14px 0;
+}
+
+.loading-message-user-icon{
+    background-color: #171717;
+    padding: 25px;
+    border-radius: 50%;
+}

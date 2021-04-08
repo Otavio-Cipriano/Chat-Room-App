@@ -9,19 +9,19 @@ export function useMessages(){
 }
 
 export function MessagesProvider({children}){
-    const [messages, setMessages] = useState([])
-    const {currentUser} = useAuth()
-    const collection = db.collection('Messages')
-    .orderBy("date", 'desc')
+    const [messages, setMessages] = useState([]);
+    const {currentUser} = useAuth();
+    const [loading, setLoading] = useState(true)
+    const collection = db.collection('Messages');
 
     const getMessages = () =>{
-        collection.onSnapshot((querySnapshot)=>{
+        collection.orderBy("date", 'asc').onSnapshot((querySnapshot)=>{
             const items = [];
             querySnapshot.forEach((doc)=>{
                 items.push(doc.data())
             })
-            console.log(items)
             setMessages(items)
+            setLoading(true)
         })
     }
 
@@ -35,12 +35,9 @@ export function MessagesProvider({children}){
             message: message,
             date: date
         }
-        collection
-        .doc()
-        .set(newMessage)
-        .catch((err) =>{
+        collection.doc().set(newMessage).catch((err) =>{
             console.log(err);
-        })
+        });
     }
 
     useEffect(()=>{

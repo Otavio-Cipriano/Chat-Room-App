@@ -13,17 +13,25 @@ export default function Messenger() {
     },[])
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        if(message.length > 0){
+        if(e){e.preventDefault()}
+        if(message.length > 0 && message[0] != "\n"){
             sendMessage(message)
             setMessage('')
         }
         textRef.current.focus()
     }
+    const handleKeyPress = (e) => {
+        if(e.key == 'Enter'){
+            handleSubmit()
+        }
+        if(e.shiftKey && e.key =='Enter'){
+            handleSubmit()
+        }
+    }
     return (
         <div className="messenger">
             <form onSubmit={handleSubmit}>
-                <textarea ref={textRef} onChange={e => setMessage(e.currentTarget.value)} value={message} />
+                <textarea onKeyPress={handleKeyPress} ref={textRef} onChange={e => setMessage(e.currentTarget.value)} value={message} />
                 <button type="submit"> <IoSend /> </button>
             </form>
         </div>
