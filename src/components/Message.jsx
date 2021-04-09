@@ -13,13 +13,12 @@ const options = {
 export default function Message({ message }) {
     const {currentUser} = useAuth()
     const timeConverter = (date) =>{
-        let newDate = new Date(date)
+        let newDate = new Date(date * 1000)
         .toLocaleString(language, options)
         return newDate;
     }
     const isMine = currentUser.profile.given_name == message.user ||
     currentUser.profile.name == message.user? true : false; 
-
     return (
         <div className={`message ${isMine ? 'reverse-message': null}`}>
             <div className="user-icon">
@@ -36,7 +35,7 @@ export default function Message({ message }) {
                     "You " :
                     `${message.user} `
                     } 
-                    - {timeConverter(message.date)}
+                    - {timeConverter(message.date?.seconds)}
                 </div>
             </div>
         </div>

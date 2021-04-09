@@ -17,7 +17,8 @@ export function AuthProvider({ children }) {
             if(result){
                 setCurrentUser({
                     profile: result.additionalUserInfo.profile,
-                    isNewUser: result.additionalUserInfo.isNewUser
+                    isNewUser: result.additionalUserInfo.isNewUser,
+                    uid: result.user.uid
                 })
             }
         }).catch(err =>{ console.error(err)})

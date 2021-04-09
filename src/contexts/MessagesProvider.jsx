@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { db } from '../firebase'
-import { useAuth } from './AuthProvider'
+import React, { useContext, useEffect, useState } from 'react';
+import firebase from 'firebase/app';
+import { db } from '../firebase';
+import { useAuth } from './AuthProvider';
 
 const MessagesContext = React.createContext()
 
@@ -15,7 +16,7 @@ export function MessagesProvider({children}){
     const collection = db.collection('Messages');
 
     const getMessages = () =>{
-        collection.orderBy("date", 'asc').onSnapshot((querySnapshot)=>{
+        collection.orderBy("date", 'asc').limit(30).onSnapshot((querySnapshot)=>{
             const items = [];
             querySnapshot.forEach((doc)=>{
                 items.push(doc.data())
@@ -26,14 +27,15 @@ export function MessagesProvider({children}){
     }
 
     const sendMessage = (message) =>{
-        let date = new Date().toUTCString()
         let newMessage = {
+            user_id: currentUser.uid,
             user: currentUser.profile.given_name?
                     currentUser.profile.given_name:
                     currentUser.profile.name,
+            name: currentUser.profile.name,
             user_icon: currentUser.profile.picture,
             message: message,
-            date: date
+            date: firebase.firestore.FieldValue.serverTimestamp()
         }
         collection.doc().set(newMessage).catch((err) =>{
             console.log(err);
