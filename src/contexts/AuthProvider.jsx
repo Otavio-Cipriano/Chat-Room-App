@@ -26,12 +26,12 @@ export function AuthProvider({ children }) {
     }
 
     const signIn = () => {
-        try {
-            signInWithGoogle()
-        } catch (error) {
+        signInWithGoogle().then(()=>{
+            setLogged(true)
+        }).catch((err)=>{
+            console.log(err)
             setLogged(false)
-            console.log(error)
-        }
+        })
     }
 
     useEffect(()=>{
