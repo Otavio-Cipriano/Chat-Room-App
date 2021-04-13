@@ -25,6 +25,15 @@ export function AuthProvider({ children }) {
         await setLogged(true)
     }
 
+    const signIn = () => {
+        try {
+            signInWithGoogle()
+        } catch (error) {
+            setLogged(false)
+            console.log(error)
+        }
+    }
+
     useEffect(()=>{
         if(currentUser != undefined){
             setLogged(true)
@@ -38,7 +47,7 @@ export function AuthProvider({ children }) {
     }
 
     const value = {
-        signInWithGoogle,
+        signIn,
         signOut,
         currentUser,
         logged

@@ -9,15 +9,15 @@ export default function Navbar({signOut}) {
         <div className="navbar">
             <div className="user-info">
                 <div className="user-avatar">
-                    <img src={currentUser.profile.picture}
-                        alt={`${currentUser.profile.given_name ?
-                            currentUser.profile.given_name :
-                            currentUser.profile.name}'s Avatar`} />
+                    <img src={currentUser?.profile.picture}
+                        alt={`${currentUser?.profile.given_name ?
+                            currentUser?.profile.given_name :
+                            currentUser?.profile.name}'s Avatar`} />
                 </div>
                 <div className="user-name">
-                    {currentUser.profile.given_name ?
-                        currentUser.profile.given_name :
-                        currentUser.profile.name}
+                    {currentUser?.profile.given_name ?
+                        currentUser?.profile.given_name :
+                        currentUser?.profile.name}
                 </div>
             </div>
             <div className="user-tools">
