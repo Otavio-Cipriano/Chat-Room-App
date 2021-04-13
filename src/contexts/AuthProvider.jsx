@@ -11,31 +11,32 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useLocalStorage('User')
     const [logged, setLogged] = useState(false)
+    const [error, setError] = useState(false)
 
     const signInWithGoogle = async () => {
         await auth.signInWithPopup(provider).then((result) => {
-            if(result){
+
+            if (result) {
                 setCurrentUser({
                     profile: result.additionalUserInfo.profile,
                     isNewUser: result.additionalUserInfo.isNewUser,
                     uid: result.user.uid
                 })
             }
-        }).catch(err =>{ console.error(err)})
-        await setLogged(true)
-    }
-
-    const signIn = () => {
-        signInWithGoogle().then(()=>{
-            setLogged(true)
-        }).catch((err)=>{
-            console.log(err)
-            setLogged(false)
+        }).catch(err =>{
+            if (err) {
+                setLogged(false)
+                setError(true) 
+                console.error(err);
+            }
         })
+        if(!error){
+            setLogged(true)
+        }
     }
 
-    useEffect(()=>{
-        if(currentUser != undefined){
+    useEffect(() => {
+        if (currentUser != undefined && currentUser != null) {
             setLogged(true)
         }
     }, [])
@@ -47,8 +48,8 @@ export function AuthProvider({ children }) {
     }
 
     const value = {
-        signIn,
         signOut,
+        signInWithGoogle,
         currentUser,
         logged
     }

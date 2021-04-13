@@ -17,8 +17,8 @@ export default function Message({ message }) {
         .toLocaleString(language, options)
         return newDate;
     }
-    const isMine = currentUser.profile.given_name == message.user ||
-    currentUser.profile.name == message.user? true : false; 
+    const isMine = currentUser?.profile.given_name == message.user ||
+    currentUser?.profile.name == message.user? true : false; 
     return (
         <div className={`message ${isMine ? 'reverse-message': null}`}>
             <div className="user-icon">

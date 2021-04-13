@@ -5,10 +5,10 @@ import {AiFillGoogleCircle} from 'react-icons/ai'
 import './Signin.css'
 
 export default function Signin() {
-    const { signIn, logged } = useAuth()
+    const { signInWithGoogle, logged } = useAuth()
     const history = useHistory()
     const handleClick = async () => {
-        await signIn()
+        await signInWithGoogle()
     }
     useEffect(() => {
         if (logged) {

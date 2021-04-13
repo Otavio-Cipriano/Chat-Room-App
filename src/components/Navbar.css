@@ -1,7 +1,7 @@
 .navbar{
     display: flex;
     width: 100%;
-    height: 10%;
+    height: 12%;
     background-color: var(--dark-blue);
     color: var(--light-gray)
 }
@@ -19,9 +19,9 @@
 .navbar .user-info .user-avatar{
     margin: 15px 10px 10px 10px;
     width: 50%;
-    max-width: 63px;
+    max-width: 60px;
     height: 90%;
-    max-height: 65px;
+    max-height: 60px;
 }
 .navbar .user-info .user-avatar img{
     width: 100%;
